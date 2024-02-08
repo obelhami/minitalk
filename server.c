@@ -11,8 +11,10 @@
 /* ************************************************************************** */
 #include <unistd.h>
 #include <signal.h>
+#include <stdio.h>
 
-int	g_str;
+// char g_str;
+int inde;
 
 void	ft_putnbr(int n)
 {
@@ -41,7 +43,7 @@ void	ft_putnbr(int n)
 void	handler(int getnum)
 {
 	int			tmp;
-	static int	index = 0;	
+	static char	g_str;
 
 	tmp = 0;
 	if (getnum == SIGUSR1)
@@ -53,30 +55,28 @@ void	handler(int getnum)
 	{
 		g_str = g_str << 1;
 	}
-	if (index == 7)
+	inde++;
+	if (inde == 8)
 	{
 		write(1, &g_str, 1);
 		g_str = 0;
-		index = 0;
-		return ;
+		inde = 0;
 	}
-	index++;
 }
 
 int	main(void)
 {
 	int	pid;
-
+ 
 	pid = getpid();
 	write(1, "WELCOME TO MINITALK\n", 20);
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
 	write(1, "the PID is : ", 13);
 	ft_putnbr(pid);
 	write(1, "\n", 1);
+	signal(SIGUSR1, handler);
+	signal(SIGUSR2, handler);
 	while (1)
 	{
-		pause();
 	}
 	return (0);
 }
