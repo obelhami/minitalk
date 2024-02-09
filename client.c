@@ -76,6 +76,11 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
+	if (pid <= 0)
+	{
+		write(1, "the PID invalide", 16);
+		return(0);
+	}
 	send_string(argv[2], pid);
 	send_string("\n", pid);
 	return (0);
