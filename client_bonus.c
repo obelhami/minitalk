@@ -6,7 +6,7 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 09:07:26 by obelhami          #+#    #+#             */
-/*   Updated: 2024/02/10 09:07:29 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:52:25 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -15,7 +15,7 @@ void	send_string(char *str, int pid)
 {
 	int	i;
 	int	j;
-	int killl;
+	int	killl;
 
 	i = 0;
 	while (str[i])
@@ -37,18 +37,20 @@ void	send_string(char *str, int pid)
 		i++;
 	}
 }
+
 void	handler(int getnum)
 {
 	if (getnum == SIGUSR1)
 	{
 		write(1, "Message received by the server\n", 32);
 	}
-	return;
+	return ;
 }
+
 int	main(int argc, char *argv[])
 {
-	int	pid; 
-	int	c_pid;
+	int		pid;
+	int		c_pid;
 	char	*str_pid;
 
 	if (argc != 3)
@@ -62,7 +64,7 @@ int	main(int argc, char *argv[])
 	if (pid <= 0)
 	{
 		write(1, "the PID invalide", 16);
-		return(0);
+		return (0);
 	}
 	signal(SIGUSR1, handler);
 	send_string(str_pid, pid);

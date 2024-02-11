@@ -6,7 +6,7 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 10:01:18 by obelhami          #+#    #+#             */
-/*   Updated: 2024/02/10 09:11:14 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:56:17 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -15,7 +15,7 @@ void	send_string(char *str, int pid)
 {
 	int	i;
 	int	j;
-	int killl;
+	int	killl;
 
 	i = 0;
 	while (str[i])
