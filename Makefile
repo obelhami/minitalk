@@ -12,8 +12,7 @@ all : $(NAME)
 $(NAME): client.c server.c
 		$(CC) $(CFLAGS) client.c -o client
 		$(CC) $(CFLAGS) server.c -o server
-
-
+		
 clean:
 			$(RM) $(NAME)
 
